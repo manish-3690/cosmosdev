@@ -79,7 +79,7 @@ export default function Contact() {
     <>
       <Helmet>
         <title>Contact | CosmosDev</title>
-        <meta name="description" content="Contact DevToolbox. Have questions or found a bug? We'd love to hear from you." />
+        <meta name="description" content="Contact CosmosDev. Have questions or found a bug? We'd love to hear from you." />
       </Helmet>
 
       <div className="space-y-8">
@@ -273,7 +273,7 @@ export default function Contact() {
                 Have an idea for a new tool? Want to see improvements to existing tools? We'd love to hear your suggestions!
               </p>
               <p className="text-text-tertiary text-sm">
-                Every piece of feedback helps us make DevToolbox better for the developer community.
+                Every piece of feedback helps us make CosmosDev better for the developer community.
               </p>
             </div>
           </div>

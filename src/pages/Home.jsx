@@ -15,10 +15,10 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>CosmosDev - Free Online Developer Tools</title>
-        <meta name="description" content="Free online tools for developers. JSON formatter, Base64 encoder, password generator, and more." />
-        <meta property="og:title" content="CosmosDev - Free Online Developer Tools" />
-        <meta property="og:description" content="Free online tools for developers. Convert, encode, generate, and validate with ease." />
+        <title>CosmosDev - The universe of developer tools</title>
+        <meta name="description" content="The universe of developer tools. Free online tools for developers - encode, decode, generate, convert, and validate with precision." />
+        <meta property="og:title" content="CosmosDev - The universe of developer tools" />
+        <meta property="og:description" content="Free online developer tools. Encode, decode, generate, convert, and validate with precision." />
         <meta property="og:type" content="website" />
       </Helmet>
 

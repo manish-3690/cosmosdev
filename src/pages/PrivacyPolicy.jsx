@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
     <>
       <Helmet>
         <title>Privacy Policy | CosmosDev</title>
-        <meta name="description" content="DevToolbox privacy policy. Learn how we handle your data." />
+        <meta name="description" content="CosmosDev privacy policy. Learn how we handle your data." />
       </Helmet>
 
       <div className="space-y-8">
@@ -32,14 +32,14 @@ export default function PrivacyPolicy() {
           <section className="space-y-3">
             <h2 className="text-xl font-semibold text-text-primary">1. Introduction</h2>
             <p className="text-text-secondary leading-relaxed">
-              DevToolbox ("we," "our," or "us") operates the DevToolbox website located at devtoolbox.io (the "Service"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our free developer tools.
+              CosmosDev ("we," "our," or "us") operates the CosmosDev website located at cosmosdev.io (the "Service"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our free developer tools.
             </p>
           </section>
 
           <section className="space-y-3">
             <h2 className="text-xl font-semibold text-text-primary">2. No Account Required</h2>
             <p className="text-text-secondary leading-relaxed">
-              DevToolbox is a completely free service that does not require registration or login. You can use all our tools without creating an account or providing any personal information. We do not collect, store, or process any user data on our servers.
+              CosmosDev is a completely free service that does not require registration or login. You can use all our tools without creating an account or providing any personal information. We do not collect, store, or process any user data on our servers.
             </p>
           </section>
 

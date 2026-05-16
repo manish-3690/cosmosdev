@@ -1,14 +1,14 @@
 # CosmosDev
 
-Premium developer utilities for modern engineers. Encode, decode, generate, convert, and validate with precision.
+The universe of developer tools. Premium utilities for modern engineers — encode, decode, generate, convert, and validate with precision.
 
 ## Features
 
 - **25 Professional Tools** - JSON formatter, Base64 encoder, password generator, QR code generator, and more
-- **Dark Theme** - Modern, eye-friendly dark UI
+- **Dark Theme** - Modern, eye-friendly dark UI with purple/indigo accents
 - **Mobile Responsive** - Works on all devices
 - **Fast & Free** - 100% client-side, no server required
-- **SEO Optimized** - Each tool has unique meta tags
+- **SEO Optimized** - Each tool has unique meta tags and Open Graph tags
 - **Monetization Ready** - AdSense placeholders included
 
 ## Quick Start
@@ -32,18 +32,22 @@ npm run preview
 ```
 src/
 ├── components/
-│   ├── AdSlot.jsx        # Ad placeholder component
-│   ├── Footer.jsx        # Site footer
-│   ├── Header.jsx        # Site header
-│   ├── Layout.jsx        # Main layout wrapper
-│   ├── Sidebar.jsx       # Navigation sidebar
-│   └── ToolCard.jsx      # Tool card for homepage
+│   ├── AdSlot.jsx          # Ad placeholder component
+│   ├── FloatingCoffeeButton.jsx  # Ko-fi support button
+│   ├── Footer.jsx          # Site footer
+│   ├── Header.jsx          # Site header
+│   ├── Layout.jsx          # Main layout wrapper
+│   ├── Sidebar.jsx         # Navigation sidebar
+│   ├── Toast.jsx           # Toast notifications
+│   ├── ToolCard.jsx        # Tool card for homepage
+│   ├── WaitlistModal.jsx   # Pro feature waitlist modal
+│   └── WaitlistContext.jsx # Waitlist state management
 ├── data/
-│   └── tools.js          # Tool metadata
-├── pages/                # 25 tool pages + Home + 404
-├── App.jsx               # Main app with routing
-├── index.css             # Global styles
-└── main.jsx              # Entry point
+│   └── tools.js            # Tool metadata
+├── pages/                  # 25 tool pages + Home + About + 404
+├── App.jsx                 # Main app with routing
+├── index.css               # Global styles
+└── main.jsx                # Entry point
 ```
 
 ## Deploy to Vercel (Free)
@@ -100,7 +104,7 @@ vercel --prod
 2. Submit your application with your site URL
 3. Wait for approval (usually 1-7 days)
 
-### 2. Add AdSense Code
+### 2: Add AdSense Code
 
 Once approved, replace the placeholder divs in `src/components/AdSlot.jsx`:
 
@@ -164,4 +168,4 @@ MIT License - feel free to use for personal or commercial projects.
 
 ---
 
-Built with ❤️ for developers
+🚀 Built with ❤️ for developers — The universe of developer tools

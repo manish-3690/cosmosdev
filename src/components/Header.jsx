@@ -15,7 +15,7 @@ export default function Header({ onMenuClick }) {
           </button>
           <Link to="/" className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-accent-primary to-accent-secondary flex items-center justify-center">
-              <span className="text-white font-bold text-lg">C</span>
+              <span className="text-white font-mono font-bold text-sm">&lt;/&gt;</span>
             </div>
             <span className="text-xl font-bold text-text-primary hidden sm:block">
               Cosmos<span className="text-accent-primary">Dev</span>

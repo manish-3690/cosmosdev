@@ -52,12 +52,12 @@ export default function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent-primary to-accent-secondary flex items-center justify-center">
-                <span className="text-white font-bold text-sm">C</span>
+                <span className="text-white font-mono font-bold text-xs">&lt;/&gt;</span>
               </div>
               <span className="text-lg font-bold text-text-primary">CosmosDev</span>
             </Link>
             <p className="text-text-secondary text-sm">
-              Free online tools for developers. Convert, encode, generate, and validate with ease.
+              The universe of developer tools. Convert, encode, generate, and validate with precision.
             </p>
           </div>
 

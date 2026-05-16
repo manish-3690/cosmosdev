@@ -30,7 +30,7 @@ const features = {
 
 const faqs = [
   {
-    question: 'Do I need an account to use DevToolbox?',
+    question: 'Do I need an account to use CosmosDev?',
     answer: 'No! The free tier works without any account or registration. Simply visit any tool and start using it immediately.',
   },
   {
@@ -157,7 +157,7 @@ export default function Pricing() {
     <>
       <Helmet>
         <title>Pricing | CosmosDev</title>
-        <meta name="description" content="DevToolbox pricing plans. Free forever or upgrade to Pro for an ad-free experience." />
+        <meta name="description" content="CosmosDev pricing plans. Free forever or upgrade to Pro for an ad-free experience." />
       </Helmet>
 
       <div className="space-y-8">
