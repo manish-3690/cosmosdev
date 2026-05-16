@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { GitCompare, Copy, Check, Download } from 'lucide-react';
+import { GitCompare } from 'lucide-react';
 import AdSlot from '../components/AdSlot';
+import { useWaitlist } from '../components/WaitlistContext';
 
 export default function DiffChecker() {
+  const { openWaitlist } = useWaitlist();
   const [original, setOriginal] = useState('');
   const [modified, setModified] = useState('');
   const [diff, setDiff] = useState([]);
@@ -54,7 +56,12 @@ export default function DiffChecker() {
             <h1 className="text-2xl font-bold text-text-primary">Code Diff Checker</h1>
             <p className="text-text-secondary">Compare two pieces of code</p>
           </div>
-          <span className="pro-badge ml-auto">Pro</span>
+          <button
+            onClick={openWaitlist}
+            className="pro-badge ml-auto cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            Pro
+          </button>
         </div>
 
         <AdSlot position="top" />

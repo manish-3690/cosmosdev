@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Database, Download, Copy, Check, AlertCircle } from 'lucide-react';
 import AdSlot from '../components/AdSlot';
+import { useWaitlist } from '../components/WaitlistContext';
 
 export default function JsonToXml() {
+  const { openWaitlist } = useWaitlist();
   const [json, setJson] = useState('');
   const [xml, setXml] = useState('');
   const [error, setError] = useState(null);
@@ -93,7 +95,12 @@ export default function JsonToXml() {
             <h1 className="text-2xl font-bold text-text-primary">JSON to XML</h1>
             <p className="text-text-secondary">Convert JSON to XML format</p>
           </div>
-          <span className="pro-badge ml-auto">Pro</span>
+          <button
+            onClick={openWaitlist}
+            className="pro-badge ml-auto cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            Pro
+          </button>
         </div>
 
         <AdSlot position="top" />

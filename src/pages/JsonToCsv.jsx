@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Database, Download, Copy, Check, AlertCircle } from 'lucide-react';
+import { Database, Download, Copy, Check, AlertCircle, Lock } from 'lucide-react';
 import AdSlot from '../components/AdSlot';
+import { useWaitlist } from '../components/WaitlistContext';
 
 export default function JsonToCsv() {
+  const { openWaitlist } = useWaitlist();
   const [json, setJson] = useState('');
   const [csv, setCsv] = useState('');
   const [error, setError] = useState(null);
@@ -79,7 +81,12 @@ export default function JsonToCsv() {
             <h1 className="text-2xl font-bold text-text-primary">JSON to CSV</h1>
             <p className="text-text-secondary">Convert JSON arrays to CSV format</p>
           </div>
-          <span className="pro-badge ml-auto">Pro</span>
+          <button
+            onClick={openWaitlist}
+            className="pro-badge ml-auto cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            Pro
+          </button>
         </div>
 
         <AdSlot position="top" />

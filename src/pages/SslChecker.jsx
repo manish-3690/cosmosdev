@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ShieldCheck, Search, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
+import { ShieldCheck, AlertCircle, CheckCircle, XCircle } from 'lucide-react';
 import AdSlot from '../components/AdSlot';
+import { useWaitlist } from '../components/WaitlistContext';
 
 export default function SslChecker() {
+  const { openWaitlist } = useWaitlist();
   const [domain, setDomain] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -62,7 +64,12 @@ export default function SslChecker() {
             <h1 className="text-2xl font-bold text-text-primary">SSL Certificate Checker</h1>
             <p className="text-text-secondary">Check SSL certificate details</p>
           </div>
-          <span className="pro-badge ml-auto">Pro</span>
+          <button
+            onClick={openWaitlist}
+            className="pro-badge ml-auto cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            Pro
+          </button>
         </div>
 
         <AdSlot position="top" />

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Network, Search, AlertCircle, MapPin, Server, Globe } from 'lucide-react';
 import AdSlot from '../components/AdSlot';
+import { useWaitlist } from '../components/WaitlistContext';
 
 export default function IpLookup() {
+  const { openWaitlist } = useWaitlist();
   const [ip, setIp] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -48,7 +50,12 @@ export default function IpLookup() {
             <h1 className="text-2xl font-bold text-text-primary">IP Address Lookup</h1>
             <p className="text-text-secondary">Look up IP location and ISP information</p>
           </div>
-          <span className="pro-badge ml-auto">Pro</span>
+          <button
+            onClick={openWaitlist}
+            className="pro-badge ml-auto cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            Pro
+          </button>
         </div>
 
         <AdSlot position="top" />
