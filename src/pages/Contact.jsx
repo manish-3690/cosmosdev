@@ -1,21 +1,78 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Mail, MessageSquare, Send, Check, Github, Twitter, Linkedin, Bug, ExternalLink } from 'lucide-react';
+import { Mail, MessageSquare, Send, Check, Github, Twitter, Linkedin, Bug, ExternalLink, Loader2 } from 'lucide-react';
 import AdSlot from '../components/AdSlot';
+
+const FORMSPREE_URL = 'https://formspree.io/f/mpqnaalq';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Formspree will handle the form submission
-    // Replace ACTION_URL with your Formspree endpoint
-    setSubmitted(true);
+    setError('');
+
+    if (!formData.name.trim()) {
+      setError('Please enter your name');
+      return;
+    }
+
+    if (!formData.email.trim() || !validateEmail(formData.email)) {
+      setError('Please enter a valid email');
+      return;
+    }
+
+    if (!formData.subject) {
+      setError('Please select a subject');
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      setError('Please enter your message');
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        const data = await response.json();
+        setError(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,18 +99,20 @@ export default function Contact() {
           <div className="card space-y-6">
             <h2 className="text-xl font-semibold text-text-primary">Send us a Message</h2>
 
-            {submitted ? (
+            {success ? (
               <div className="text-center py-8">
                 <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
                   <Check size={32} className="text-green-500" />
                 </div>
-                <h3 className="text-lg font-semibold text-text-primary mb-2">Message Sent!</h3>
-                <p className="text-text-secondary">Thank you for reaching out. We'll get back to you soon.</p>
+                <h3 className="text-lg font-semibold text-text-primary mb-2">Message sent!</h3>
+                <p className="text-text-secondary">
+                  ✅ We'll reply within 24-48 hours
+                </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-text-secondary">Name</label>
+                  <label className="text-sm font-medium text-text-secondary">Full Name</label>
                   <input
                     type="text"
                     required
@@ -61,11 +120,12 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Your name"
                     className="input-field"
+                    disabled={loading}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-text-secondary">Email</label>
+                  <label className="text-sm font-medium text-text-secondary">Email Address</label>
                   <input
                     type="email"
                     required
@@ -73,7 +133,25 @@ export default function Contact() {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="your@email.com"
                     className="input-field"
+                    disabled={loading}
                   />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-text-secondary">Subject</label>
+                  <select
+                    required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    className="input-field"
+                    disabled={loading}
+                  >
+                    <option value="">Select a subject...</option>
+                    <option value="Bug Report 🐛">Bug Report 🐛</option>
+                    <option value="Feature Request 💡">Feature Request 💡</option>
+                    <option value="General Question 💬">General Question 💬</option>
+                    <option value="Partnership 🤝">Partnership 🤝</option>
+                  </select>
                 </div>
 
                 <div className="space-y-2">
@@ -83,29 +161,54 @@ export default function Contact() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Your message..."
+                    rows={4}
                     className="tool-input h-40"
+                    disabled={loading}
                   />
                 </div>
 
-                <button type="submit" className="btn-primary flex items-center gap-2 w-full justify-center">
-                  <Send size={18} />
-                  Send Message
+                {error && (
+                  <div className="text-red-500 text-sm p-3 bg-red-500/10 rounded-md">
+                    {error}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="btn-primary flex items-center gap-2 w-full justify-center"
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 size={18} className="animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      Send Message 🚀
+                    </>
+                  )}
                 </button>
               </form>
             )}
-
-            <div className="pt-4 border-t border-border-color space-y-2">
-              <p className="text-text-tertiary text-sm">
-                For quick responses, you can also email us directly at{' '}
-                <span className="text-accent-primary">cosmosdev0@gmail.com</span>
-              </p>
-              <p className="text-text-tertiary text-sm">
-                Typical response time: 24-48 hours
-              </p>
-            </div>
           </div>
 
           <div className="space-y-6">
+            <div className="card space-y-4">
+              <h2 className="text-xl font-semibold text-text-primary">Contact Information</h2>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Mail size={18} className="text-accent-primary" />
+                  <span className="text-text-secondary">cosmosdev0@gmail.com</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Check size={18} className="text-green-500" />
+                  <span className="text-text-secondary">Response time: 24-48 hours</span>
+                </div>
+              </div>
+            </div>
+
             <div className="card space-y-4">
               <div className="flex items-center gap-2">
                 <Bug size={20} className="text-red-500" />
