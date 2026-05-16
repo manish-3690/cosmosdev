@@ -33,8 +33,10 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Contact from './pages/Contact';
 import Pricing from './pages/Pricing';
+import About from './pages/About';
 
 import WaitlistModal from './components/WaitlistModal';
+import FloatingCoffeeButton from './components/FloatingCoffeeButton';
 import { useWaitlist } from './components/WaitlistContext';
 
 function AppContent() {
@@ -70,6 +72,7 @@ function AppContent() {
           <Route path="tools/ssl-checker" element={<SslChecker />} />
           <Route path="tools/qr-code" element={<QrCodeGenerator />} />
           <Route path="tools/responsive-tester" element={<ResponsiveTester />} />
+          <Route path="about" element={<About />} />
           <Route path="privacy" element={<PrivacyPolicy />} />
           <Route path="terms" element={<TermsOfService />} />
           <Route path="contact" element={<Contact />} />
@@ -78,6 +81,7 @@ function AppContent() {
         </Route>
       </Routes>
       <WaitlistModal isOpen={isOpen} onClose={closeWaitlist} />
+      <FloatingCoffeeButton />
     </>
   );
 }

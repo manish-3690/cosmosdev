@@ -24,6 +24,12 @@ export default function Header({ onMenuClick }) {
 
           <nav className="hidden lg:flex items-center gap-1 ml-8">
             <Link
+              to="/about"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm text-text-secondary hover:text-text-primary hover:bg-bg-tertiary transition-colors"
+            >
+              About
+            </Link>
+            <Link
               to="/pricing"
               className="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm text-text-secondary hover:text-text-primary hover:bg-bg-tertiary transition-colors"
             >

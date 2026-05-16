@@ -122,3 +122,20 @@ body {
 .animate-fade-in {
   animation: fade-in 0.2s ease-out;
 }
+
+@keyframes bounce-on-hover {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-on-hover {
+  animation: bounce-on-hover 2s ease-in-out infinite;
+}
+
+.animate-bounce-on-hover:hover {
+  animation-play-state: paused;
+}
